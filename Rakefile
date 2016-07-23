@@ -19,17 +19,20 @@ end
 
 desc "Email daily digest"
 task :daily_email do
-  case Time.now.wday
+  # case Time.now.wday
   # when 0, 6
   #   puts "Skipping weekend"
   #   next
   # when 1 # monday
   #   since = Time.now-3*24*60*60
   #   puts "Monday - fetching activity since #{since}"
-  else   # regular weekday
-    since = Time.now-24*60*60
-    puts "Weekday - fetching activity since #{since}"
-  end
+  # else   # regular weekday
+  #   since = Time.now-24*60*60
+  #   puts "Weekday - fetching activity since #{since}"
+  # end
+  
+  since = Time.now-24*60*60
+  puts "Weekday - fetching activity since #{since}"
 
   digest    = Devdigest.new(since).run
   markdown  = RDiscount.new(digest)
